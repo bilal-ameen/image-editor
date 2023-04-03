@@ -33,7 +33,6 @@ export default {
       options = Object.assign(includeUIOptions, this.options);
     }
     this.editorInstance = new ImageEditor(this.$refs.tuiImageEditor, options);
-    this.addEventListener();
   },
   destroyed() {
     Object.keys(this.$listeners).forEach((eventName) => {
@@ -43,11 +42,6 @@ export default {
     this.editorInstance = null;
   },
   methods: {
-    addEventListener() {
-      Object.keys(this.$listeners).forEach((eventName) => {
-        this.editorInstance.on(eventName, (...args) => this.$emit(eventName, ...args));
-      });
-    },
     getRootElement() {
       return this.$refs.tuiImageEditor;
     },
